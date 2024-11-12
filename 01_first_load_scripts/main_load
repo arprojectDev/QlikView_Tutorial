@@ -10,7 +10,6 @@ LET vEndPeriod = Today(1);	//End pariod
 SET FILE_LIB = '[project_folder_path]'; //your_path
 //CREATE & SAVE TO QVD PARAMETR
 
-
 PARAM:
 Load * Inline [ _BeginTransaction, _StartPeriod, _EndPeriod, _CurrentDate
 $(vStartTransaction), $(vStartPeriod), $(vEndPeriod), $(vEndPeriod)
