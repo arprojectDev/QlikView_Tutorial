@@ -1,0 +1,50 @@
+/////////////////////////////////////////
+//******MAIN PAGE**************
+/////////////////////////////////////////
+
+LET vStartTransaction = MakeDate(2022, 1);
+LET vFirstStock = MakeDate(2022, 1);
+LET vStartPeriod = MakeDate(2022, 1); // start period
+LET vEndPeriod = Today(1);	//End pariod
+
+SET FILE_LIB = '[project_folder_path]'; //your_path
+//CREATE & SAVE TO QVD PARAMETR
+
+
+PARAM:
+Load * Inline [ _BeginTransaction, _StartPeriod, _EndPeriod, _CurrentDate
+$(vStartTransaction), $(vStartPeriod), $(vEndPeriod), $(vEndPeriod)
+];
+
+Store PARAM into [$(FILE_LIB)01_QVDDB\01_Dictionary\00_Parameters.qvd]	(qvd);
+
+Drop Table PARAM;
+
+
+/////////////////////////////////////////
+//******Other variables**************
+/////////////////////////////////////////
+
+SET HidePrefix = '_';
+SET ShortDateFormat = 'DD.MM.YY';
+
+LET vComma = ',';
+LET vPoint = '.';
+LET vAsterisk = '*';
+LET vSeparator = ';';
+LET vSelector = '►';
+LET vBlank = '';
+
+// data format
+LET vValueFormat = '# ##0,00';
+LET vCostFormat = '# ##0';
+LET vQuantityFormat = '# ##0';
+LET vValueDiffFormat = '+# ##0,00;-# ##0,00;# ##0,00';
+LET vQuantityDiffFormat = '+# ##0;-# ##0;0';
+LET vCountFormat = '# ##0';
+LET vCountDiffFormat = '+# ##0;-# ##0;0';
+LET vRateFormat = '# ##0,0';
+LET vRateDiffFormat = '+# ##0,0;-# ##0,0;0,0';
+LET vPercentFormat = '# ##0,0%';
+LET vPercentDiffFormat = '+# ##0,0%;-# ##0,0%;0,0%';
+LET vRelativeDiffFormat = '▲# ##0,0%;▼# ##0,0%;►0,0%';
